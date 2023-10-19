@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="/cart.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title><%= title  %></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <!-- <link rel="stylesheet" href="/assets/css/fontawesome.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    <!-- <link rel="stylesheet" href="/assets/css/flex-slider.css"> -->
+<!--
+Tooplate 2114 Pixie
+https://www.tooplate.com/view/2114-pixie
+-->
+  </head>
+
+  <body>
+    
+    <!-- Pre Header -->
+    <div id="pre-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <%- include ('./includes/navbar.ejs') %>
+
+    <!-- Page Content -->
+    <!-- About Page Starts Here -->
+
+    <div class="about-page">
+        <div class="container">
+
+   
+
+            </div>
+        </div>
+<h3 id="total"></h3>
+        <section class="h-100 h-custom" style="background-color: #d2c9ff;">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                  <div class="card-body p-0">
+                    <div class="row g-0">
+                      <div class="col-lg-8">
+                        <div class="p-5">
+                          <div class="d-flex justify-content-between align-items-center mb-5">
+                            <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                            <!-- <h6 class="mb-0 text-muted"><div class="quantity1">3</div> items</h6> -->
+                          </div>
+                          <hr class="my-4">
+        
+                         
+                          <% if (cart.length > 0) { %>
+                            
+                              <% cart.forEach(function(item,i) { %>
+                             
+
+
+        
+                          <div class="row mb-4 d-flex justify-content-between align-items-center" id="element-<%= item._id %>"style="" >
+                            <div class="col-md-2 col-lg-2 col-xl-2" >
+                              <img
+                                src="/<%= item.image %>"
+                                class="img-fluid rounded-3" alt="Cotton T-shirt">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Shirt</h6>
+                              <h6 class="text-black mb-0"><%= item.name %></h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- <button class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                 <i class="fas fa-minus"></i> 
+                              </button> -->
+        
+                              <!-- <input id="form1" min="0" name="quantity" value="<%= item.quantity %>" type="number"
+                                class="form-control form-control-sm" /> -->
+                                <i class="fa-solid fa-minus" onclick="decreamental('<%= item._id %>') " id="minus" style="padding: 5px;"></i>
+                                  <div id="<%= item._id %>" style="display: inline-flex;"> <%= item.quantity %> </div>
+                                  <i class="fa-solid fa-plus" onclick="increamental('<%= item._id %>') " id="plus" style="padding: 5px;"></i>
+        
+                              <!-- <button class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                <i class="bi bi-plus"></i> 
+                              </button> -->
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0" id="price-<%= item._id %>"><%= item.price %></h6>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                              <!-- <a href="#!" class="text-muted"><i class="fas fa-times"></i></a> -->
+                            </div>
+                          </div>
+        
+                          <hr class="my-4">
+
+                          <% }); %>
+
+                          <% } else { %>
+                            <p>There are no items in your cart</p>
+                        <% } %>
+        
+
+        
+                          <!-- <hr class="my-4">
+        
+
+        
+                          <hr class="my-4"> -->
+        
+                          <div class="pt-5">
+                            <h6 class="mb-0"><a href="#!" class="text-body"><i
+                                  class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 bg-grey">
+                        <div class="p-5">
+                          <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                          <hr class="my-4">
+        
+                          <div class="d-flex justify-content-between mb-4">
+                            <h5 class="text-uppercase">items <%= cart.length %></h5>
+                            <h5>€ 132.00</h5>
+                          </div>
+        
+                          <h5 class="text-uppercase mb-3">Shipping</h5>
+        
+                          <div class="mb-4 pb-2">
+                            <select class="select">
+                              <option value="1">Standard-Delivery- €5.00</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                              <option value="4">Four</option>
+                            </select>
+                          </div>
+        
+                          <h5 class="text-uppercase mb-3">Give code</h5>
+        
+                          <div class="mb-5">
+                            <div class="form-outline">
+                              <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                              <label class="form-label" for="form3Examplea2">Enter your code</label>
+                            </div>
+                          </div>
+        
+                          <hr class="my-4">
+        
+                          <div class="d-flex justify-content-between mb-5">
+                            <h5 class="text-uppercase">Total price</h5>
+                            <h5 id="totalprice"><%= totalprice %></h5>
+                          </div>
+        
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="button" class="btn btn-dark btn-block btn-lg"
+          data-mdb-ripple-color="dark" id="checkout">checkout</button>
+
+        
+                          
+        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+ 
+    
+
+  
+
+
+
+
+    <!-- About Page Ends Here -->
+
+    <!-- Subscribe Form Starts Here -->
+    <div class="subscribe-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Subscribe on PIXIE now!</h1>
+            </div>
+          </div>
+          <div class="col-md-8 offset-md-2">
+            <div class="main-content">
+              <p>Godard four dollar toast prism, authentic heirloom raw denim messenger bag gochujang put a bird on it celiac readymade vice.</p>
+              <div class="container">
+                <form id="subscribe" action="" method="get">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <fieldset>
+                        <input name="email" type="text" class="form-control" id="email" 
+                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }" 
+                    	onBlur="if(this.value == '') { this.value = 'Your Email...';}"
+                    	value="Your Email..." required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-md-5">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="button">Subscribe Now!</button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Subscribe Form Ends Here -->
+
+
+    
+    <!-- Footer Starts Here -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="logo">
+              <img src="/assets/images/header-logo.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="footer-menu">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">How It Works ?</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="social-icons">
+              <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Ends Here -->
+
+
+    <!-- Sub Footer Starts Here -->
+    <div class="sub-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="copyright-text">
+              <p>Copyright &copy; 2019 Company Name 
+                
+                - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sub Footer Ends Here -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/owl.js"></script>
+    <script src="/assets/js/isotope.js"></script>
+    <script src="/assets/js/flex-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+     integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+            let cart1 = '<%- JSON.stringify(cart) %>';
+            console.log(JSON.parse(cart1));
+            let cart = JSON.parse(cart1);
+            //console.log(cart);
+
+
+
+
+let quantity = document.getElementsByClassName('quantity1');
+
+let total = document.getElementById('total');
+let totalprice = '<%= totalprice %>';
+let totalquantity = 0;
+
+let increamental = (id) => {
+  let price = document.getElementById('price-'+id);
+  console.log('plus');
+  console.log(id);
+  document.getElementById(id).innerHTML++;
+  totalprice  = +Number(totalprice) + +price.innerHTML;
+  document.getElementById('totalprice').innerHTML = totalprice;
+  //  total.innerHTML = totalprice;
+  totalquantity= + Number(document.getElementById(id).innerHTML)
+  //quantity.innerHTML = totalquantity;
+  console.log(totalquantity);
+  cart.forEach(function(item,i) {
+    if (item._id == id) {
+      item.quantity = totalquantity;
+    }
+  });
+  console.log(cart);
+
+  
+  
+
+
+
+}
+
+let decreamental = (id) => {
+  let price = document.getElementById('price-'+id);
+  console.log('minus');
+  console.log(id);
+  if (document.getElementById(id).innerHTML > 1) {
+    
+    document.getElementById(id).innerHTML--;
+    totalquantity--;
+    totalprice -= price.innerHTML;
+    total.innerHTML = totalprice;
+    totalquantity=+ Number(document.getElementById(id).innerHTML);
+     document.getElementById('totalprice').innerHTML = totalprice;
+    console.log(totalquantity);
+    cart.forEach(function(item,i) {
+    if (item._id == id) {
+      item.quantity = totalquantity;
+    }
+  });
+  console.log(cart);
+  }else {
+    totalprice -= price.innerHTML;
+    total.innerHTML = totalprice;
+     document.getElementById('totalprice').innerHTML = totalprice;
+    document.getElementById('element-'+id).transition = 'opacity 0s'; 
+    document.getElementById('element-'+id).style.opacity = 0;
+cart.forEach(function(item,i) {
+    if (item._id == id) {
+      cart.splice(i,1);
+    }
+  });
+  console.log(cart);
+
+  }
+
+
+
+}
+
+document.getElementById('checkout').addEventListener('click', function() {
+  console.log(totalprice);
+  axios.post('/checkout', {
+    cart: {cart,totalprice},
+    
+    _csrf: document.getElementsByName("_csrf")[0].value
+  })
+  .then(function (response) {
+    console.log(response.config);
+  
+    window.location.href = '/checkout';
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
+
+
+
+
+    </script>
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;                    // you could use true and false, but that's more typing
+          t.value='';                           // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+
+
+
+
+
+
+    </script>
+
+
+  </body>
+
+</html>

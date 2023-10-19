@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../includes/header.ejs') %>
+
+<form action="http://localhost:3000/admin/editproduct/<%= product._id %>" method="post" enctype="multipart/form-data">
+    
+        product name:  <input type="text" name="name" value="<%= product.name %>"><br>
+        price: <input type="number" name="price" value="<%= product.price %>"><br>
+        <!-- description: <input type="text" name="description" value="<%= product.description %>"><br> -->
+        image: <input type="file" name="image" value="<%= product.image %>"><br>
+        <input type="hidden" name="id" value="<%= product._id %>" >
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit">submit</button>
+
+
+</form>
+
+    
+<%- include ('../includes/footer.ejs') %>
+</html>

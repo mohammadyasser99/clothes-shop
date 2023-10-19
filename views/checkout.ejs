@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>Pixie - Ecommerce HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+Tooplate 2114 Pixie
+https://www.tooplate.com/view/2114-pixie
+-->
+  </head>
+<style>
+    
+    .text-gray{color: #aaa}
+   
+</style>
+  <body>
+    
+    <!-- Pre Header -->
+    <div id="pre-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+<%- include ('./includes/navbar.ejs') %>
+
+<div class="row" style="position: relative;top: 60px;">
+    <div class="col-lg-8 mx-auto">
+        <!-- List group-->
+        <ul class="list-group shadow">
+            <h3>your order will arrive in 3 days</h3>
+
+         
+
+
+            <% for(let i=0;i<checkout.length;i++){ %>
+
+                <% for(let j=0;j<checkout[i].cart.length;j++){ %>
+
+
+            <!-- list group item-->
+            <li class="list-group-item">
+                <!-- Custom content-->
+                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                    <div class="media-body order-2 order-lg-1">
+                        <h5 class="mt-0 font-weight-bold mb-2"><%= checkout[i].cart[j].name %></h5>
+                        <p class="font-italic text-muted mb-0 small">quantity : <%= checkout[i].cart[j].quantity %></p>
+                        <div class="d-flex align-items-center justify-content-between mt-1">
+                            <h6 class="font-weight-bold my-2">₹<%= checkout[i].cart[j].price %></h6>
+                            <!-- <ul class="list-inline small">
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
+                            </ul> -->
+                            
+                        </div>
+                    </div><img src="<%= checkout[i].cart[j].image %>" alt="Generic placeholder image"  style="height: 170px;width: 140px" class="ml-lg-5 order-1 order-lg-2" >
+                </div> <!-- End -->
+            </li> <!-- End -->
+
+
+            <% } %>
+
+            <h2>total price: <%= checkout[i].totalprice %></h2>
+            
+        
+            <% } %>
+         
+            <!-- list group item-->
+      
+            
+
+        </ul> <!-- End -->
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
+

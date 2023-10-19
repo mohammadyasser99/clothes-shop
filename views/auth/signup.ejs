@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <title>sign up</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/tooplate-main.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+<!--
+Tooplate 2114 Pixie
+https://www.tooplate.com/view/2114-pixie
+-->
+  </head>
+
+  <body>
+    
+    <!-- Pre Header -->
+    <div id="pre-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" >
+        <div class="container">
+          <a class="navbar-brand" href="http://localhost:3000/"><img src="/assets/images/header-logo.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:3000/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:3000/products">Products</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:3000/about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:3000/contact-us">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:3000/admin/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:3000/admin/signup">Register</a>
+              </li>
+            </ul>
+    
+          </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <!-- <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="caption">
+              <h2>Ecommerce HTML Template</h2>
+              <div class="line-dec"></div>
+              <p>Pixi e-commerce website 
+              <br><br>Please tell your friends about our website</a>.</p>
+              <div class="main-button">
+                <a href="#">Order Now!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Banner Ends Here -->
+
+<div style="position: relative;top: 60px;" class="container">
+
+<!-- <form action="adduser" method="post" class="mb-3">
+  name:  <input type="text" name="username"><br>
+  email:  <input type="text" name="email"><br>
+   password: <input type="password" name="password"><br>
+    address: <input type="text" name="address"><br>
+    phone: <input type="number" name="phone"><br>
+    country: <input type="text" name="country"><br>
+    <select name="role" >
+        <option value="admin">admin</option>
+        <option value="user">user</option>
+    </select><br>
+    
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+
+    <button type="submit">submit</button>
+</form> -->
+
+<form class="row g-3" action="adduser" method="post">
+  <div class="col-md-6">
+    <label for="firstname" class="form-label">first name</label>
+    <input type="text" class="form-control" id="inputEmail4" name="username">
+  </div>
+  <div class="col-md-6">
+    <label for="lastname" class="form-label">last name</label>
+    <input type="text" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputAddress" placeholder="enter tour Email" name="email">
+  </div>
+  <div class="col-12">
+    <label for="password" class="form-label">password</label>
+    <input type="password" class="form-control" id="inputAddress2" placeholder="enter your password" name="password">
+  </div>
+  <div class="col-12">
+    <label for="phone" class="form-label">phone number</label>
+    <input type="number" class="form-control" id="inputAddress2" placeholder="enter your phone number" name="phone">
+
+  </div>
+  <div class="col-md-4">
+    <label for="country" class="form-label">country</label>
+    <input type="text" class="form-control" id="inputCity" name="country">
+  </div>
+  <div class="col-md-4">
+    <label for="city" class="form-label">city</label>
+    <input type="text" class="form-control" id="inputCity">
+  </div>
+  <div class="col-md-4">
+    <label for="address" class="form-label">address</label>
+    <input type="text" class="form-control" id="inputZip" name="address">
+  </div>
+  <div class="col-md-4">
+    <label for="role" class="form-label">role</label>
+    <select id="inputState" class="form-select" name="role">
+      <option selected>user</option>
+      <option>admin</option>
+    </select>
+  </div>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" >register</button>
+  </div>
+</form>
+
+ </div>
+
+
+
+    <%- include ('../includes/footer.ejs') %>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    
+        <!-- Additional Scripts -->
+        <script src="/assets/js/custom.js"></script>
+        <script src="/assets/js/owl.js"></script>
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+</body>
+</html>

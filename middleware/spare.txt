@@ -1,0 +1,119 @@
+const express = require('express');
+const router = express.Router();
+const Product = require('../models/product');
+const Cart = require('../models/cart');
+const session = require('express-session');
+const { json } = require('body-parser');
+
+
+router.get('/',function (req, res) {
+Product.find().then(function (products) {
+res.render('index', {products: products});
+});
+});
+
+router.get('/single-product/:id',function (req, res) {
+
+Product.findById(req.params.id).then(function (product) {
+res.render('single-product', {product: product, title: product.title});
+});
+});
+
+router.get('/about',function (req, res) {
+res.render('about', {title: 'About Us'});
+});
+
+router.get('/contact-us',function (req, res) {
+res.render('contact', {title: 'Contact Us'});
+});
+
+router.get('/products',function (req, res) {
+res.render('products', {title: 'Products'});
+});
+
+router.post('/addtocart', function (req, res) {
+
+    if(!req.session.user){
+     return  res.redirect('/admin/login')
+    }
+       // console.log(req.session.user._id);
+        const userid = req.session.user._id;
+        const productid = req.body.productid;
+        const quantity = req.body.quantity;
+        
+ Cart.findOne({userid:userid}).then(function (cart) {
+
+    if(cart){
+
+
+  Cart.findOne({userid:userid, "products.productid":productid}).then(function (product) {
+
+
+// if(product){
+// Cart.findOneAndUpdate({userid:userid, "products.productid":productid},{$set:{"products.$.quantity":quantity}}).then(function (cart) {
+//     console.log(cart);
+//     console.log('1');
+   
+//     // cart.totalprice = Number( cart.totalprice + (quantity * product.price));
+//     // cart.save();
+//    // req.session.cart = cart;
+//     res.redirect('/yourcart');
+// })
+// }else{
+// Cart.findOneAndUpdate({userid:userid},{$push:{products:{productid:productid,quantity:quantity}}}).then(function (cart) {
+//     console.log(cart);
+//     console.log('2');
+//     // cart.totalprice = cart.totalprice + (quantity * product.price);
+//     // cart.save();
+//    // req.session.cart = cart;
+//     res.redirect('/yourcart');
+// });
+
+// }
+
+
+
+});
+    }else{
+        const cart = new Cart({
+            userid: userid,
+            products: [{productid:productid,quantity:quantity}],
+            totalprice: 0
+        });
+        cart.save().then(function (cart) {
+            console.log(cart);
+            console.log('3');
+          //  req.session.cart = cart;
+            res.redirect('/yourcart');
+        });
+    }
+});
+
+
+
+        
+});
+
+
+
+   
+
+
+router.get('/yourcart', async function (req, res) {
+  //  console.log(req.session.user._id);
+
+    Cart.find({userid:req.session.user._id}).then(function (cart) {
+       console.log(cart[0].products);
+       //req.session.cart = cart;
+       res.render('yourcart', {title: 'Your Cart',cart:cart[0].products});
+       
+    });
+
+    
+    
+    
+    
+});
+    
+
+module.exports = router

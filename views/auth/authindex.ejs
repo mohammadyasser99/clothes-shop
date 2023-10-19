@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ('../includes/header.ejs') %>
+
+
+<% products.forEach(function(product){ %>
+    <div class="card" style="width: 18rem;">
+        <img src="/<%= product.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.description %></p>
+          <a href="http://localhost:3000/admin/editproduct/<%= product._id %>" class="btn btn-primary">edit</a>
+          <form action="http://localhost:3000/admin/deleteproduct/<%= product._id %>" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn btn-danger">delete</button>
+          </form>
+            
+        </div>
+      </div>
+<% }) %>
+
+
+<%- include ('../includes/footer.ejs') %>
+
+
+   
+</html>
