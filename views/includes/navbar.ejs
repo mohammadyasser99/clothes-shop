@@ -1,40 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <a class="navbar-brand" href="http://localhost:3000/"><img src="/assets/images/header-logo.png" alt=""></a>
+      <a class="navbar-brand" href="https://pixie-kd1e.onrender.com/"><img src="/assets/images/header-logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:3000/">Home
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/">Home
              
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/products">Products</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/products">Products</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/admin/addproduct">add products</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/admin/addproduct">add products</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/about">About Us</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/contact-us">Contact Us</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/contact-us">Contact Us</a>
           </li>
 <% if (!isloggedin) { %>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/admin/login">Login</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/admin/login">Login</a>
           </li>
 <% }  %>
 
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000/admin/signup">Register</a>
+            <a class="nav-link" href="https://pixie-kd1e.onrender.com/admin/signup">Register</a>
           </li>
           <% if (isloggedin) { %>
           <li class="nav-item" >
-            <form action="http://localhost:3000/admin/logout" method="post" id="logoutform">
+            <form action="https://pixie-kd1e.onrender.com/admin/logout" method="post" id="logoutform">
               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button type="submit"  style=" border: none;">log out</button>
               
