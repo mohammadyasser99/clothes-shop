@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include ('../includes/header.ejs') %>
 
-<form action="http://localhost:3000/admin/editproduct/<%= product._id %>" method="post" enctype="multipart/form-data">
+<form action="https://pixie-kd1e.onrender.com/admin/editproduct/<%= product._id %>" method="post" enctype="multipart/form-data">
     
         product name:  <input type="text" name="name" value="<%= product.name %>"><br>
         price: <input type="number" name="price" value="<%= product.price %>"><br>
